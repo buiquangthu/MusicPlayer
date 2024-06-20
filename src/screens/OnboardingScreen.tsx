@@ -6,13 +6,13 @@ import Swiper from "react-native-swiper";
 const OnboardingScreen = ({navigation}: any) => {
     return (
         <ImageBackground
-            source={require('../assets/image/Welcome.png')}
+            source={require('../assets/images/Welcome.png')}
             style={styles.container}
         >
-            <Image source={require('../assets/image/2_Ellipse_2.png')} style={[styles.ellipse_2]} />
-            <Image source={require('../assets/image/2_Ellipse_3.png')} style={[styles.ellipse_3]} />
-            <Image source={require('../assets/image/2_Ellipse_4.png')} style={[styles.ellipse_4]} />
-            <Image source={require('../assets/image/img_girl.png')} style={[{ marginTop: '38%', }]} resizeMode="cover" />
+            <Image source={require('../assets/images/2_Ellipse_2.png')} style={[styles.ellipse_2]} />
+            <Image source={require('../assets/images/2_Ellipse_3.png')} style={[styles.ellipse_3]} />
+            <Image source={require('../assets/images/2_Ellipse_4.png')} style={[styles.ellipse_4]} />
+            <Image source={require('../assets/images/img_girl.png')} style={[{ marginTop: '38%', }]} resizeMode="cover" />
 
             <Swiper style={{}}
                 dot={<View style={styles.dot} />}

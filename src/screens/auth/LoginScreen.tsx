@@ -1,6 +1,8 @@
 import React from "react"
 import { View, Text } from "react-native"
 import CustomButton from "../../components/CustomButton"
+import Icon from "react-native-vector-icons/FontAwesome"
+
 
 const LoginScreen = () => {
   return (
@@ -11,7 +13,7 @@ const LoginScreen = () => {
         onPress={() => console.log("Login")}
         icon={
           <View>
-            <Text style={[{ color: "#FFFFFF" }]}>N</Text>
+            <Text > <Icon name="home" color={"#ffffff"} size={22}/></Text>
           </View>
 
         }

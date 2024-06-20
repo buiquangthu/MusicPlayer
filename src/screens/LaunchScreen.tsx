@@ -6,8 +6,8 @@ const LaunchScreen = () => {
     return (
         <View style={styles.container}>
             <ImageBackground>
-                <Image source={require('../assets/image/musium_logo.png')} style={{ justifyContent: "center", marginTop: '40%' }} />
-                <Image source={require('../assets/image/Luna.png')} style={{position: "absolute", marginTop: '83%', marginLeft: '15%'}} />
+                <Image source={require('../assets/images/musium_logo.png')} style={{ justifyContent: "center", marginTop: '40%' }} />
+                <Image source={require('../assets/images/Luna.png')} style={{position: "absolute", marginTop: '83%', marginLeft: '15%'}} />
             </ImageBackground>
             <View style = {{height: 20}}/>
             <ActivityIndicator color= '#FFFFFF' size={30}/>
