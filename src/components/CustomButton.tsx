@@ -2,6 +2,7 @@ import React, { ReactNode } from "react"
 import {  Text, StyleProp, TouchableOpacity, ViewStyle, TextStyle } from "react-native"
 import { globalStyles } from "../styles/globalStyles";
 import CustomText from "./CustomText";
+import { appColors } from "../constants/appColors";
 
 interface Props {
   icon?: ReactNode;
@@ -24,7 +25,7 @@ const CustomButton = (props: Props) => {
         onPress={onPress}
         style={
           [globalStyles.button, {
-            backgroundColor: color ?? "#1E1E1E"
+            backgroundColor: color ?? appColors.background
           }, style]} >
         {icon && icon}
         <CustomText
@@ -37,7 +38,7 @@ const CustomButton = (props: Props) => {
       </TouchableOpacity>
       :
       <TouchableOpacity>
-        <Text style={{ color: type === 'link' ? "#39C0D4" : "#FFFFFF" }}>{text}</Text>
+        <Text style={[{ color: type === 'link' ? "#39C0D4" : appColors.background },textStyle]}>{text}</Text>
       </TouchableOpacity>
   )
 };

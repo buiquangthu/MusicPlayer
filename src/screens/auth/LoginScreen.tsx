@@ -1,36 +1,166 @@
 import React, { useState } from "react"
-import { View, Text } from "react-native"
-import CustomButton from "../../components/CustomButton"
-import Icon from "react-native-vector-icons/FontAwesome"
-import { CustomTextInput } from "../../components";
-import { Use } from "react-native-svg";
+import { View, Image, StyleSheet, TouchableOpacity, Text } from "react-native"
+import { ContainerComponent, CustomButton, CustomText, CustomTextInput } from "../../components";
+import CheckBox from "@react-native-community/checkbox";
 import { Lock, Sms } from "iconsax-react-native";
 import { appColors } from "../../constants/appColors";
+import { globalStyles } from "../../styles/globalStyles";
+import { Apple, Facebook, Google, Mail } from "../../assets/svgs";
+
+
 
 
 const LoginScreen = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [isSelected, setSelection] = useState(false)
+
   return (
-    <View style = {{alignContent: "center", flex: 1, justifyContent: "center", padding: 30}}>
-      <CustomTextInput
-        value={email}
-        onChange={val => setEmail(val)}
-        allowClear
-        hint="Email"
-        affix = {<Sms size={22} color= {appColors.white} />}
+    <ContainerComponent isImageBackground>
+      <View style={[styles.logo]}>
+        <Image source={require("../../assets/images/musium_logo.png")}
+          style={{
+            height: 215,
+            width: 275
+          }} />
+      </View>
+      <View>
+        <CustomText text="Login to your account" size={40} styles={{
+          fontWeight: "700",
+          lineHeight: 80,
+          textAlign: "center",
+
+        }} />
+      </View>
+      <View style={{ padding: 34 }}>
+        <CustomTextInput
+          value={email}
+          hint="Email"
+          onChange={val => setEmail(val)}
+          affix={<Sms size={22} color={appColors.white} />}
+          allowClear
         />
 
         <CustomTextInput
-        value={password}
-        onChange={val => setPassword(val)}
-        isPassword
-        hint="Password"
-        affix = {<Lock size={22} color= {appColors.white} />}
+          value={password}
+          hint="Password"
+          onChange={val => setPassword(val)}
+          affix={<Lock size={22} color={appColors.white} />}
+          isPassword
         />
-    </View>
+      </View>
+      <View style={{ flexDirection: "row", alignItems: "center", marginTop: -25 }}>
+        <CheckBox
+          value={isSelected}
+          onValueChange={setSelection}
+          tintColors={{ true: appColors.white, false: appColors.white }}
+          style={styles.checkbox}
+        />
+        <Text style={styles.label}>Remember me</Text>
+      </View>
+
+      <CustomButton
+        text="Login"
+        type="primary"
+        style={styles.buttonlogin}
+        textStyle={{ fontWeight: "700", fontSize: 16 }}
+      />
+
+      <CustomButton
+        text="Forgot the password"
+        type="link"
+        textStyle={[{ fontWeight: "700", fontSize: 16, fontStyle: "normal", textAlign: "center" }]}
+        style={{ marginTop: 23 }}
+      />
+
+      <CustomText
+        text="_________________ or continue with _________________"
+        size={15}
+        styles={[styles.continueWith]}
+
+      />
+
+      <View style={[styles.loginWith]}>
+        <TouchableOpacity style={styles.circleButton}>
+          <Google height={40} width={40} />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.circleButton}>
+          <Facebook height={40} width={40} />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.circleButton}>
+          <Apple height={40} width={40} />
+        </TouchableOpacity>
+
+      </View>
+
+      <View style={[styles.textSignUp]}>
+        <CustomText text="Don't have an account? " size={16} />
+        <CustomButton type="link" text="Sign Up" textStyle={[{ fontSize: 16, fontWeight: "700" }]} />
+      </View>
+
+
+    </ContainerComponent>
+
   )
 };
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignContent: "center"
+  },
+  logo: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 32,
+    marginBottom: 0
+  },
+  label: {
+    color: appColors.white,
+    marginLeft: 8,
+    fontWeight: "700",
+    fontSize: 15
+  },
+  checkbox: {
+    marginLeft: "8%"
+  },
+  buttonlogin: {
+    margin: 34,
+    borderRadius: 50,
+    borderWidth: 1,
+    borderColor: appColors.white,
+  },
+  continueWith: {
+    textAlign: "center",
+    marginTop: 40,
+    fontWeight: "700",
+    fontSize: 17,
+  },
+  loginWith: {
+    flexDirection: "row",
+    flex: 1,
+    marginTop: 35,
+    justifyContent: "space-around",
+  },
+  circleButton: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: 60,
+    width: 60,
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: appColors.white,
+  },
+  textSignUp: {
+    flexDirection: "row",
+    justifyContent: "center",
+    position: "absolute",
+    bottom: 20,
+    left: "25%"
+  }
+})
 
 export default LoginScreen;

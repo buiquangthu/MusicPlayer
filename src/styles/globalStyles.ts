@@ -2,7 +2,7 @@ import React from "react"
 import { View, Text, StyleSheet } from "react-native"
 
 export const globalStyles = StyleSheet.create({
-  button:{
+  button: {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: '1E1E1E',
@@ -11,5 +11,10 @@ export const globalStyles = StyleSheet.create({
     paddingVertical: 20,
     minHeight: 59,
     borderRadius: 50,
-  }
+  },
+  container: {
+    flex: 1,
+    backgroundColor: "#1E1E1E",
+  },
+
 })

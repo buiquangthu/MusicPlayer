@@ -17,6 +17,7 @@ const CustomText = (props: Props) => {
                 color: color ?? "#FFFFFF",
                 fontSize: size ?? 16,
                 flex: flex ?? 0,
+                fontFamily: 'Century_Gothic'
             }, styles]
         }>
             {text}
