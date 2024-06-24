@@ -2,15 +2,15 @@ import React, { useState } from "react"
 import { View, Image, StyleSheet, TouchableOpacity, Text } from "react-native"
 import { ContainerComponent, CustomButton, CustomText, CustomTextInput } from "../../components";
 import CheckBox from "@react-native-community/checkbox";
-import { Lock, Sms } from "iconsax-react-native";
+import { Lock, Sms} from "iconsax-react-native";
 import { appColors } from "../../constants/appColors";
 import { globalStyles } from "../../styles/globalStyles";
-import { Apple, Facebook, Google, Mail } from "../../assets/svgs";
+import { Apple, Facebook, Google, Back } from "../../assets/svgs";
 
 
 
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation} : any) => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -18,6 +18,11 @@ const LoginScreen = () => {
 
   return (
     <ContainerComponent isImageBackground>
+      <View>
+        <TouchableOpacity style = {{marginTop: 10}} onPress={() => navigation.goBack()}>
+          <Back height={30} width={30}/>
+        </TouchableOpacity>
+      </View>
       <View style={[styles.logo]}>
         <Image source={require("../../assets/images/musium_logo.png")}
           style={{
