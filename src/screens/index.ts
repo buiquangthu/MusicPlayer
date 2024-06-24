@@ -2,7 +2,9 @@ import LoginScreen from "./auth/LoginScreen";
 import LaunchScreen from "./LaunchScreen";
 import OnboardingScreen from "./OnboardingScreen";
 import HomeScreen from "./home/HomeScreen";
-import SignIn from "./auth/SignIn";
+import SignInScreen from "./auth/SignInScreen";
+import SignUpScreen from "./SignUpScreen";
+import ForgotPassword from "./auth/ForgotPassword"
 
 
 export {
@@ -10,5 +12,7 @@ export {
     OnboardingScreen,
     HomeScreen,
     LoginScreen,
-    SignIn
+    SignInScreen,
+    SignUpScreen,
+    ForgotPassword
 }

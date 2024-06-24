@@ -37,7 +37,9 @@ const CustomButton = (props: Props) => {
         {icon && iconFlex === "right" && icon}
       </TouchableOpacity>
       :
-      <TouchableOpacity>
+      <TouchableOpacity 
+          onPress={onPress}
+      >
         <Text style={[{ color: type === 'link' ? "#39C0D4" : appColors.background },textStyle]}>{text}</Text>
       </TouchableOpacity>
   )

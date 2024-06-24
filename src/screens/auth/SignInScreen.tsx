@@ -4,7 +4,7 @@ import { ContainerComponent, CustomButton, CustomText } from "../../components";
 import { Apple, Facebook, Google } from "../../assets/svgs";
 import { appColors } from "../../constants/appColors";
 
-const SignIn = ({navigation}: any) => {
+const SignInScreen = ({ navigation }: any) => {
     return (
         <ContainerComponent isImageBackground >
             <View style={[styles.logo]}>
@@ -60,9 +60,14 @@ const SignIn = ({navigation}: any) => {
                 />
 
             </View>
-            <View style = {styles.textSignUp}>
+            <View style={styles.textSignUp}>
                 <CustomText text="Don't have an account? " size={16} />
-                <CustomButton type="link" text="Sign Up" textStyle={[{ fontSize: 16, fontWeight: "700" }]} />
+                <CustomButton
+                    type="link"
+                    text="Sign Up"
+                    textStyle={[{ fontSize: 16, fontWeight: "700" }]}
+                    onPress={() => navigation.navigate("SignUpScreen")}
+                />
             </View>
 
 
@@ -96,4 +101,4 @@ const styles = StyleSheet.create({
         marginTop: 20
     }
 })
-export default SignIn;
+export default SignInScreen;

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { View, Image, StyleSheet, TouchableOpacity, Text } from "react-native"
 import { ContainerComponent, CustomButton, CustomText, CustomTextInput } from "../../components";
 import CheckBox from "@react-native-community/checkbox";
-import { Lock, Sms} from "iconsax-react-native";
+import { Lock, Sms } from "iconsax-react-native";
 import { appColors } from "../../constants/appColors";
 import { globalStyles } from "../../styles/globalStyles";
 import { Apple, Facebook, Google, Back } from "../../assets/svgs";
@@ -10,19 +10,14 @@ import { Apple, Facebook, Google, Back } from "../../assets/svgs";
 
 
 
-const LoginScreen = ({navigation} : any) => {
+const LoginScreen = ({ navigation }: any) => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isSelected, setSelection] = useState(false)
 
   return (
-    <ContainerComponent isImageBackground>
-      <View>
-        <TouchableOpacity style = {{marginTop: 10}} onPress={() => navigation.goBack()}>
-          <Back height={30} width={30}/>
-        </TouchableOpacity>
-      </View>
+    <ContainerComponent isImageBackground back>
       <View style={[styles.logo]}>
         <Image source={require("../../assets/images/musium_logo.png")}
           style={{
@@ -68,7 +63,7 @@ const LoginScreen = ({navigation} : any) => {
       <CustomButton
         text="Login"
         type="primary"
-        style={styles.buttonlogin}
+        style={[styles.buttonlogin, { backgroundColor: appColors.turquoise }]}
         textStyle={{ fontWeight: "700", fontSize: 16 }}
       />
 
@@ -103,7 +98,12 @@ const LoginScreen = ({navigation} : any) => {
 
       <View style={[styles.textSignUp]}>
         <CustomText text="Don't have an account? " size={16} />
-        <CustomButton type="link" text="Sign Up" textStyle={[{ fontSize: 16, fontWeight: "700" }]} />
+        <CustomButton
+          type="link"
+          text="Sign Up"
+          textStyle={[{ fontSize: 16, fontWeight: "700" }]}
+          onPress={() => navigation.navigate('SignUpScreen')}
+        />
       </View>
 
 
@@ -120,8 +120,6 @@ const styles = StyleSheet.create({
   logo: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 32,
-    marginBottom: 0
   },
   label: {
     color: appColors.white,

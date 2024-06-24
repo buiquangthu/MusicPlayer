@@ -35,7 +35,7 @@ const OnboardingScreen = ({navigation}: any) => {
 
             <View>
                 <TouchableOpacity style={styles.button}
-                    onPress={() => navigation.navigate('SignIn')}>
+                    onPress={() => navigation.navigate('SignInScreen')}>
                     <Text style={styles.buttonText}>Get Started</Text>
                 </TouchableOpacity>  
             </View>
