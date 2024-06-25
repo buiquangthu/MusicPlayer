@@ -27,11 +27,11 @@ const CustomButton = (props: Props) => {
           [globalStyles.button, {
             backgroundColor: color ?? appColors.background
           }, style]} >
-        {icon && icon}
+        {icon && icon === "left" && icon}
         <CustomText
           text={text}
           color={textColor}
-          styles={[textStyle, {marginLeft: icon && iconFlex === "left" ? 20 : 0}]}
+          styles={[textStyle, {marginLeft: icon && iconFlex === "left" ? 20 : 0, textAlign: "center"}]}
           flex={icon && iconFlex === "right" ? 1 : 0}
         />
         {icon && iconFlex === "right" && icon}

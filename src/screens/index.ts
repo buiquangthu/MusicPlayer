@@ -5,6 +5,7 @@ import HomeScreen from "./home/HomeScreen";
 import SignInScreen from "./auth/SignInScreen";
 import SignUpScreen from "./SignUpScreen";
 import ForgotPassword from "./auth/ForgotPassword"
+import Verification from "./auth/Verification"
 
 
 export {
@@ -14,5 +15,6 @@ export {
     LoginScreen,
     SignInScreen,
     SignUpScreen,
-    ForgotPassword
+    ForgotPassword,
+    Verification
 }

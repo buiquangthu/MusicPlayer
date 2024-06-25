@@ -72,6 +72,7 @@ const LoginScreen = ({ navigation }: any) => {
         type="link"
         textStyle={[{ fontWeight: "700", fontSize: 16, fontStyle: "normal", textAlign: "center" }]}
         style={{ marginTop: 23 }}
+        onPress={() => navigation.navigate('ForgotPassword')}
       />
 
       <CustomText
