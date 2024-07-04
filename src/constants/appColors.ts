@@ -6,5 +6,6 @@ export const appColors = {
     turquoise1: "#44D7DD",
     turquoise2: "#00C2CB",
     lightBlue: "#A6F3FF",
-    gray: "#446266"
+    gray: "#446266",
+    dangerou: "#ff0000"
 }

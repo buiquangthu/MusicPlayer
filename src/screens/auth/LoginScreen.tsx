@@ -4,8 +4,8 @@ import { ContainerComponent, CustomButton, CustomText, CustomTextInput } from ".
 import CheckBox from "@react-native-community/checkbox";
 import { Lock, Sms } from "iconsax-react-native";
 import { appColors } from "../../constants/appColors";
-import { globalStyles } from "../../styles/globalStyles";
-import { Apple, Facebook, Google, Back } from "../../assets/svgs";
+import { Apple, Facebook, Google} from "../../assets/svgs";
+import authenticationAPI from "../../apis/authApi";
 
 
 
@@ -15,6 +15,16 @@ const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isSelected, setSelection] = useState(false)
+
+  const handleLogin = async () => {
+    
+    try {
+      const res = await authenticationAPI.HandleAuthentication('/register')
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <ContainerComponent isImageBackground back>
@@ -65,6 +75,7 @@ const LoginScreen = ({ navigation }: any) => {
         type="primary"
         style={[styles.buttonlogin, { backgroundColor: appColors.turquoise }]}
         textStyle={{ fontWeight: "700", fontSize: 16 }}
+        onPress={() => handleLogin()}
       />
 
       <CustomButton

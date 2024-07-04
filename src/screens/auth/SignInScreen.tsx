@@ -28,10 +28,11 @@ const SignInScreen = ({ navigation }: any) => {
                     textStyle={[styles.textStyle]}
                     icon={<Google height={35} width={35} />}
                     style={styles.buttonStyle}
+
                 />
                 <CustomButton
                     type="primary"
-                    text="Continue with Google"
+                    text="Continue with Facebook"
                     iconFlex="left"
                     textStyle={[styles.textStyle]}
                     icon={<Facebook height={33} width={33} />}
@@ -39,7 +40,7 @@ const SignInScreen = ({ navigation }: any) => {
                 />
                 <CustomButton
                     type="primary"
-                    text="Continue with Google"
+                    text="Continue with Apple"
                     iconFlex="left"
                     textStyle={[styles.textStyle]}
                     icon={<Apple height={33} width={33} />}
