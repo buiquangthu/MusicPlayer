@@ -13,10 +13,11 @@ interface Props {
   isPassword?: boolean;
   allowClear?: boolean;
   key?: KeyboardType;
+  onEnd?: () => void;
 }
 
 const CustomTextInput = (props: Props) => {
-  const { value, hint, affix, suffix, onChange, isPassword, allowClear, key } = props;
+  const { value, hint, affix, suffix, onChange, isPassword, allowClear, key, onEnd} = props;
 
   const [showPassword, setShowPassword] = useState(isPassword ?? false);
 
@@ -32,6 +33,7 @@ const CustomTextInput = (props: Props) => {
         style={[styles.textInput]}
         placeholderTextColor={appColors.text}
         keyboardType={key ?? "default"}
+        // onEndEditing={onEnd}
       />
       {suffix && suffix}
       <TouchableOpacity

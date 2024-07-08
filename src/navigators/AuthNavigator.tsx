@@ -1,10 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 import { LoginScreen, SignInScreen, OnboardingScreen, SignUpScreen, Verification, ForgotPassword} from "../screens";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 const AuthNavigator = () => {
 
+    const [isExistingUer, setIsExistingUser] = useState(false)
+
+    const checkExistingUser = () => {
+      const res = AsyncStorage.getItem('auth')
+    }
     const Stack = createNativeStackNavigator()
   return (
     <Stack.Navigator

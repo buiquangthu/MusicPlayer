@@ -1,8 +1,10 @@
 import axios from "axios";
 import queryString from "query-string";
+import { BASE_URL } from '../constants/apiRoot';
 
 
 const axiosClient = axios.create({
+    baseURL: BASE_URL,
     paramsSerializer: params => queryString.stringify(params)
 })
 

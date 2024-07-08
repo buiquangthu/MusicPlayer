@@ -31,7 +31,6 @@ const ForgotPassword = ({navigation}: any) => {
           type="primary"
           style={{ backgroundColor: appColors.turquoise, marginTop: 40 }}
           textStyle={{ fontWeight: "700" }}
-          icon={<ArrowRight size={22} color={appColors.white} />}
           iconFlex="right"
           onPress={()=> navigation.navigate('Verification') }
         />

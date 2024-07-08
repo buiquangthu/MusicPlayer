@@ -9,21 +9,14 @@ import AppRouters from "./src/navigators/AppNavigator";
 
 
 const App = () => {
-  const [isShowLaunchScreen, setIsShowLaunchScreen] = useState(true)
 
-  useEffect(() => {
-    const timeOut = setTimeout(() => {
-      setIsShowLaunchScreen(false)
-    }, 2000)
-    return () => clearTimeout(timeOut)
-  })
   return (
     <Provider store={store}>
       <StatusBar barStyle={"dark-content"} />
-      {isShowLaunchScreen ? <LaunchScreen /> :
+
         <NavigationContainer>
           <AppRouters/>
-        </NavigationContainer>}
+        </NavigationContainer>
     </Provider>
 
   )

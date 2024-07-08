@@ -1,11 +1,15 @@
 import React, { useState } from "react"
-import { View, Image, StyleSheet, TouchableOpacity, Text } from "react-native"
+import { View, Image, StyleSheet, TouchableOpacity, Text, Alert } from "react-native"
 import { ContainerComponent, CustomButton, CustomText, CustomTextInput } from "../../components";
 import CheckBox from "@react-native-community/checkbox";
 import { Lock, Sms } from "iconsax-react-native";
 import { appColors } from "../../constants/appColors";
-import { Apple, Facebook, Google} from "../../assets/svgs";
+import { Apple, Facebook, Google } from "../../assets/svgs";
 import authenticationAPI from "../../apis/authApi";
+import { isValidateEmail } from "../../utils/emailValidate";
+import { useDispatch } from "react-redux";
+import { addAuth } from "../../redux/reducers/authReducer";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 
@@ -13,17 +17,25 @@ import authenticationAPI from "../../apis/authApi";
 const LoginScreen = ({ navigation }: any) => {
 
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [isSelected, setSelection] = useState(false)
+  const [passWord, setPassWord] = useState("")
+  const [isSelected, setSelection] = useState(true)
+  const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    
-    try {
-      const res = await authenticationAPI.HandleAuthentication('/register')
-      console.log(res)
-    } catch (error) {
-      console.log(error)
+    if (!isValidateEmail(email)) {
+      Alert.alert("Email không hợp lệ")
+    } else {
+      try {
+        const res = await authenticationAPI.HandleAuthentication('/login', { email, passWord }, 'post')
+        dispatch(addAuth(res.data))
+        console.log(isSelected)
+        await AsyncStorage.setItem('auth', isSelected ? JSON.stringify(res.data): email )
+        // console.log(res);
+      } catch (error) {
+        console.log(error)
+      }
     }
+
   }
 
   return (
@@ -53,9 +65,9 @@ const LoginScreen = ({ navigation }: any) => {
         />
 
         <CustomTextInput
-          value={password}
+          value={passWord}
           hint="Password"
-          onChange={val => setPassword(val)}
+          onChange={val => setPassWord(val)}
           affix={<Lock size={22} color={appColors.white} />}
           isPassword
         />

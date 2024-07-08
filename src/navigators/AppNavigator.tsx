@@ -1,21 +1,27 @@
 import React, { useEffect } from "react"
-import { View, Text } from "react-native"
+import { useState } from "react";
 import MainNavigator from "./MainNavigator";
 import AuthNavigator from "./AuthNavigator";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { useDispatch, useSelector } from "react-redux";
 import { addAuth, authSelector } from "../redux/reducers/authReducer";
+import { LaunchScreen } from "../screens";
 
 const AppRouters = () => {
-
-    const { getItem } = useAsyncStorage("auth");
-
+    const [isShowLaunchScreen, setIsShowLaunchScreen] = useState(true)
     const auth = useSelector(authSelector)
     const dispatch = useDispatch();
-
+    const { getItem } = useAsyncStorage("auth");
+    
     useEffect(() => {
         checkLogin();
-    }, []);
+        const timeOut = setTimeout(() => {
+            setIsShowLaunchScreen(false)
+        }, 1500)
+        return () => clearTimeout(timeOut)
+    },[]);
+
+ 
 
     const checkLogin = async () => {
 
@@ -25,10 +31,10 @@ const AppRouters = () => {
         res && dispatch(addAuth(JSON.parse(res)));
     }
 
-    console.log(auth.accessToken);
+
 
     return <>
-        {auth.accessToken ? <MainNavigator /> : <AuthNavigator />}
+        {isShowLaunchScreen ? <LaunchScreen/> :  auth.accessToken ? <MainNavigator /> : <AuthNavigator />}
     </>
 
 

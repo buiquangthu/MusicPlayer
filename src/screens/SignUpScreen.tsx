@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { View, Image, StyleSheet, TouchableOpacity, Text } from "react-native"
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native"
 import { ContainerComponent, CustomButton, CustomText, CustomTextInput } from "../components";
 import { isValidateEmail } from "../utils/emailValidate";
 import { Lock, Sms, User } from "iconsax-react-native";
 import { appColors } from "../constants/appColors";
-
-import { Apple, Facebook, Google, Back } from "../assets/svgs";
+import { Apple, Facebook, Google } from "../assets/svgs";
 import { LoadingModal } from "../modals";
 import authenticationAPI from "../apis/authApi";
-// import Toast from "react-native-toast-message";
 import { useDispatch } from "react-redux";
-import { addAuth } from "../redux/reducers/authReducer";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
 
 const initValue = {
   userName: '',
@@ -23,11 +18,11 @@ const initValue = {
 
 const SignUpScreen = ({ navigation }: any) => {
 
-  
+
   const [values, setValues] = useState(initValue)
   const [isLoading, setIsLoading] = useState(false)
   const [errorMess, setErrorMess] = useState('')
-  const dispatch = useDispatch()
+
 
 
   useEffect(() => {
@@ -49,7 +44,8 @@ const SignUpScreen = ({ navigation }: any) => {
     setIsLoading(true)
     const { userName, email, passWord, comfirmPassWord } = values
 
-    if (userName && email && passWord && comfirmPassWord && passWord === comfirmPassWord) {
+
+    if (userName && email && passWord && comfirmPassWord && passWord) {
 
       if (!isValidateEmail(email)) {
         setErrorMess('Email không hợp lệ!!!')
@@ -62,20 +58,41 @@ const SignUpScreen = ({ navigation }: any) => {
         setIsLoading(false)
         return
       }
-
+      if (passWord !== comfirmPassWord) {
+        setErrorMess('Mật khẩu không trùng khớp!!!')
+        setIsLoading(false)
+        return
+      }
       try {
-        const res = await authenticationAPI.HandleAuthentication('/register', {
-          userName,
-          email,
-          passWord
-        }, 'post')
-        dispatch(addAuth(res.data))
-        await AsyncStorage.setItem('auth', JSON.stringify(res.data))
+        const res = await authenticationAPI.HandleAuthentication('/verification',
+          {
+            email: values.email
+          }
+          , 'post')
+        console.log(res)
+        navigation.navigate('Verification', {
+          code: res.data.code,
+          ...values,
+        })
+
         setIsLoading(false)
       } catch (error) {
         console.log(error)
-        setIsLoading(false)
       }
+
+      // try {
+      //   const res = await authenticationAPI.HandleAuthentication('/register', {
+      //     userName,
+      //     email,
+      //     passWord
+      //   }, 'post')
+      //   dispatch(addAuth(res.data))
+      //   await AsyncStorage.setItem('auth', JSON.stringify(res.data))
+      //   setIsLoading(false)
+      // } catch (error) {
+      //   console.log(error)
+      //   setIsLoading(false)
+      // }
     } else {
       setErrorMess('Vui lòng nhập đầy đủ thông tin!!!')
       setIsLoading(false)

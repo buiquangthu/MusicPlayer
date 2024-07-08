@@ -14,20 +14,22 @@ interface Props {
   iconFlex?: "right" | "left";
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
+  disabled? : boolean;
 }
 
 const CustomButton = (props: Props) => {
-  const { icon, text, type, color, textColor, onPress, iconFlex, textStyle, style } = props;
+  const { icon, text, type, color, textColor, onPress, iconFlex, textStyle, style, disabled } = props;
   return (
 
     type === "primary" ?
       <TouchableOpacity
+        disabled = {disabled}
         onPress={onPress}
         style={
           [globalStyles.button, {
             backgroundColor: color ?? appColors.background
           }, style]} >
-        {icon && icon === "left" && icon}
+        {icon && icon}
         <CustomText
           text={text}
           color={textColor}
