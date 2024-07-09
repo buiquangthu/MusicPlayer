@@ -1,12 +1,32 @@
-import React from "react"
-import { View, Text, StyleSheet } from "react-native"
+import React, { useState } from "react"
+import { View, Text, StyleSheet, Alert } from "react-native"
 import { ContainerComponent, CustomButton, CustomText, CustomTextInput } from "../../components";
 import { ArrowRight, Sms } from "iconsax-react-native";
 import { appColors } from "../../constants/appColors";
+import authenticationAPI from "../../apis/authApi";
+import { LoadingModal } from "../../modals";
 
 const ForgotPassword = ({navigation}: any) => {
 
   const [email, setEmail] = React.useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+
+  const handleForgotPassword = async() =>{
+    const api = '/forgotPassword'
+    
+    setIsLoading(true)
+    try {
+      const res = await authenticationAPI.HandleAuthentication(api,{email},"post")
+      console.log(res)
+      Alert.alert("Chúng tôi đã gửi lại mât khẩu cho bạn, vui lòng kiểm tra email của bạn")
+      setIsLoading(false)
+    } catch (error) {
+      console.log(error)
+      console.log('Không thể gửi lại mật khẩu')
+      setIsLoading(false)
+    }
+  }
 
   return (
     <ContainerComponent isImageBackground back>
@@ -27,14 +47,17 @@ const ForgotPassword = ({navigation}: any) => {
 
       <View style = {{paddingHorizontal: 50}}>
         <CustomButton
-          text="Send"
+          disabled={!email}
+          text="Gửi lại mật khẩu"
           type="primary"
           style={{ backgroundColor: appColors.turquoise, marginTop: 40 }}
           textStyle={{ fontWeight: "700" }}
           iconFlex="right"
-          onPress={()=> navigation.navigate('Verification') }
+          onPress={handleForgotPassword}
+          
         />
       </View>
+      <LoadingModal visible ={isLoading}/>
     </ContainerComponent>
   )
 };

@@ -28,7 +28,7 @@ const LoginScreen = ({ navigation }: any) => {
       try {
         const res = await authenticationAPI.HandleAuthentication('/login', { email, passWord }, 'post')
         dispatch(addAuth(res.data))
-        console.log(isSelected)
+        // console.log(isSelected)
         await AsyncStorage.setItem('auth', isSelected ? JSON.stringify(res.data): email )
         // console.log(res);
       } catch (error) {
