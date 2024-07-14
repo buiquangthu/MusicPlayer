@@ -78,6 +78,7 @@ const SignUpScreen = ({ navigation }: any) => {
         setIsLoading(false)
       } catch (error) {
         console.log(error)
+        setIsLoading(false)
       }
 
       // try {
@@ -100,7 +101,7 @@ const SignUpScreen = ({ navigation }: any) => {
   }
   return (
     <>
-      <ContainerComponent isImageBackground back>
+      <ContainerComponent isImageBackground back isScroll>
         <View style={{ marginTop: 60 }}>
           <CustomText text="Sign Up" size={40} styles={{
             fontWeight: "700",

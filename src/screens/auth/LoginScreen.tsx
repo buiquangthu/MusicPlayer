@@ -39,7 +39,7 @@ const LoginScreen = ({ navigation }: any) => {
   }
 
   return (
-    <ContainerComponent isImageBackground back>
+    <ContainerComponent isImageBackground back isScroll>
       <View style={[styles.logo]}>
         <Image source={require("../../assets/images/musium_logo.png")}
           style={{

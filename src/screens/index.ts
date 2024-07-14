@@ -6,6 +6,8 @@ import SignInScreen from "./auth/SignInScreen";
 import SignUpScreen from "./SignUpScreen";
 import ForgotPassword from "./auth/ForgotPassword"
 import Verification from "./auth/Verification"
+import ExploreScreen from "./explore/ExploreScreen";
+import LibraryScreen from "./library/LibraryScreen";
 
 
 export {
@@ -16,5 +18,7 @@ export {
     SignInScreen,
     SignUpScreen,
     ForgotPassword,
-    Verification
+    Verification,
+    ExploreScreen,
+    LibraryScreen,
 }

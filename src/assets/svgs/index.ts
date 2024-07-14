@@ -9,5 +9,6 @@ export {
     Apple,
     Google,
     Facebook,
-    Back
+    Back,
+
 };

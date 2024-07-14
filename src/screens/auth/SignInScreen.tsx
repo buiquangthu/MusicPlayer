@@ -6,7 +6,7 @@ import { appColors } from "../../constants/appColors";
 
 const SignInScreen = ({ navigation }: any) => {
     return (
-        <ContainerComponent isImageBackground >
+        <ContainerComponent isImageBackground isScroll>
             <View style={[styles.logo]}>
                 <Image source={require("../../assets/images/musium_logo.png")}
                     style={{

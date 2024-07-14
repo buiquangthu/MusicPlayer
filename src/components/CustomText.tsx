@@ -6,10 +6,11 @@ interface Props {
     size?: number;
     flex?: number;
     styles?: StyleProp<TextStyle>;
+    title?: boolean;
 }
 
 const CustomText = (props: Props) => {
-    const {text, color, size, flex, styles} = props;
+    const {text, color, size, flex, styles,title} = props;
 
     return(
         <Text style ={
